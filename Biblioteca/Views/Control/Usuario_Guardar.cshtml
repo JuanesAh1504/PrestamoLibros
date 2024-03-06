@@ -1,0 +1,35 @@
+﻿@model Biblioteca.Models.Usuario
+@{
+    ViewData["Title"] = "Usuario_Guardar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<a class="btn btn-primary btn-sm" asp-controller="Control" asp-action="Usuario_Guardar" asp-route-IdUsuario="0">Crear nuevo usuario</a>
+<br /><br />
+<form asp-action="Usuario_Guardar" asp-controller="Control" method="post">
+    <input type="hidden" asp-for="IdUsuario"/>
+    <div class="form-group">
+        <label class="form-label" asp-for="Nombre">Nombre</label>
+        <input type="text" class="form-control"asp-for="Nombre">
+    </div>
+    <div class="form-group">
+        <label class="form-label" asp-for="Apellido">Apellido</label>
+        <input type="text" class="form-control" asp-for="Apellido">
+    </div>
+    <div class="form-group">
+        <label class="form-label" asp-for="Identificacion">Identificación</label>
+        <input type="text" class="form-control" asp-for="Identificacion">
+    </div>
+    <hr />
+        @if (Model.IdUsuario == 0)
+        {
+            <button class="btn btn-primary" type="submit">Crear</button>
+        }
+        else
+        {
+            <button class="btn btn-primary" type="submit">Actualizar</button>
+
+        }
+        <a class="btn btn-dark btn-sm" asp-action="Control" asp-controller="Usuario_Listar">Volver</a>
+</form>
+

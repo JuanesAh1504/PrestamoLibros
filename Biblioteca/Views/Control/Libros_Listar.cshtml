@@ -1,0 +1,31 @@
+﻿@model List<Biblioteca.Models.Libro>
+@{
+    ViewData["Title"] = "Libros";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<a class="btn btn-primary btn-sm" asp-controller="Control" asp-action="Libro_Guardar" asp-route-IdLibro="0">Crear nuevo libro</a>
+<br />
+<br />
+<h1>Listado de libros registrados</h1>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr class="table-primary">
+            <th>Nombre libro</th>
+            <th>Autor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NombreLibro</td>
+                <td>@item.Autor</td>
+                <td><a class="btn btn-sm btn-warning" asp-action="Libro_Guardar" asp-controller="Control" asp-route-IdLibro="@item.IdLibro">Editar</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Libro_Eliminar" asp-controller="Control" asp-route-IdLibro="@item.IdLibro">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

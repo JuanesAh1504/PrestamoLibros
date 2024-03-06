@@ -1,0 +1,15 @@
+﻿@model Biblioteca.Models.Prestamo
+@{
+    ViewData["Title"] = "Préstamos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Prestamo_Eliminar" asp-controller="Control" method="post">
+    <input type="hidden" asp-for="IdPrestamo" />
+    <h4>Desea eliminar este registro realmente?</h4>
+    <hr />
+    <button class="btn btn-danger" type="submit">Eliminar</button>
+    <a class="btn btn-dark btn-sm" asp-action="Prestamos_Listar" asp-controller="Control">Volver</a>
+    </div>
+</form>
+

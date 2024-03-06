@@ -1,0 +1,35 @@
+﻿@model List<Biblioteca.Models.Prestamo>
+@{
+    ViewData["Title"] = "Prestamos_Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<a class="btn btn-primary btn-sm" asp-controller="Control" asp-action="Prestamos_Guardar" asp-route-IdPrestamo="0">Crear nuevo préstamos</a>
+<br />
+<br />
+<h1>Listado de préstamos registrados</h1>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr class="table-primary">
+            <th>Libro</th>
+            <th>Usuario</th>
+            <th>Fecha de préstamo</th>
+            <th>Regreso del préstamo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@item.oLibro.NombreLibro</td>
+                    <td>@item.oUsuario.Nombre</td>
+                    <td>@item.Fecha</td>
+                    <td>@item.Regreso</td>
+                    <td><a class="btn btn-sm btn-warning" asp-action="Prestamos_Guardar" asp-controller="Control" asp-route-IdPrestamo="@item.IdPrestamo">Editar</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Prestamo_Eliminar" asp-controller="Control" asp-route-IdPrestamo="@item.IdPrestamo">Eliminar</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

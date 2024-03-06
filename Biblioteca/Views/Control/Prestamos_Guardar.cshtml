@@ -1,0 +1,42 @@
+﻿@model Biblioteca.Models.ViewModels.PrestamosVM
+@{
+    ViewData["Title"] = "Préstamos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Prestamos_Guardar" asp-controller="Control" method="post">
+    <input type="hidden" asp-for="oPrestamos.IdPrestamo" />
+    <div class="form-group">
+        <label class="form-label" asp-for="oPrestamos.IdUsuario">Usuario</label>
+        <select class="form-select form-select-sm" asp-for="oPrestamos.IdUsuario" asp-items="@Model.oListaUsuario">
+            <option selected disabled>-- Seleccionar --</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label" asp-for="oPrestamos.IdLibro">Libro a prestar</label>
+        <select class="form-select form-select-sm" asp-for="oPrestamos.IdLibro" asp-items="@Model.oListaLibros">
+            <option selected disabled>-- Seleccionar --</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label" asp-for="oPrestamos.Fecha">Fecha del préstamo</label>
+        <input type="date" class="form-control" asp-for="oPrestamos.Fecha">
+    </div>
+    <div class="form-group">
+        <label class="form-label" asp-for="oPrestamos.Regreso">Regreso del préstamo</label>
+        <input type="date" class="form-control" asp-for="oPrestamos.Regreso">
+    </div>
+    <hr />
+    @if (Model.oPrestamos.IdPrestamo == 0)
+    {
+        <button class="btn btn-primary" type="submit">Crear</button>
+    }
+    else
+    {
+        <button class="btn btn-primary" type="submit">Actualizar</button>
+
+    }
+    <a class="btn btn-dark btn-sm" asp-action="Prestamos_Listar" asp-controller="Control">Volver</a>
+    </div>
+</form>
+

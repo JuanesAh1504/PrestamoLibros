@@ -1,0 +1,27 @@
+CREATE DATABASE Biblioteca
+GO
+USE Biblioteca
+GO
+
+CREATE TABLE Usuario(
+	IdUsuario int primary key identity(1,1),
+	Nombre varchar(60),
+	Apellido varchar(60),
+	Identificacion varchar(10)
+)
+
+CREATE TABLE Libros(
+	IdLibro int primary key identity(1,1),
+	NombreLibro varchar(100),
+	Autor varchar(70)
+)
+
+CREATE TABLE Prestamos(
+	IdPrestamo int primary key identity(1,1),
+	IdUsuario int,
+	IdLibro int,
+	Fecha varchar(40),
+	Regreso varchar(40)
+	CONSTRAINT Fk_Usuario FOREIGN KEY(IdUsuario) REFERENCES Usuario(IdUsuario),
+	CONSTRAINT Fk_Libro FOREIGN KEY(IdLibro) REFERENCES Libros(IdLibro)
+)
